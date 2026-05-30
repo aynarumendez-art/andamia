@@ -1,0 +1,894 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Guía de Claridad: cómo emprender un negocio con método · Andamia</title>
+<meta name="description" content="Tienes una idea de negocio pero no sabes por dónde empezar. La Guía de Claridad es el primer paso del sistema para construirlo. Descárgala gratis."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=DM+Sans:opsz,wght@9..40,300..700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --acid:#E5FF00;--ember:#F25A1B;
+  --ink:#0A0A0A;--ink-900:#131312;--ink-800:#1C1C1A;--ink-700:#2A2A27;
+  --s500:#6B6E68;--s300:#B7B9B2;--s200:#D4D6D0;--s100:#E8E8E2;
+  --paper:#F6F4ED;--paper-50:#FBFAF5;
+  --ff-d:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --ff-b:"DM Sans",ui-sans-serif,system-ui,sans-serif;
+  --ff-m:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --r-pill:999px;--r-md:8px;--r-lg:16px;
+  --wrap:1280px;--g:clamp(20px,5vw,72px);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--ff-b);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--acid);color:var(--ink)}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--g)}
+.eyebrow{font-family:var(--ff-m);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--s500)}
+
+/* ── NAV ── */
+.nav{position:sticky;top:0;z-index:200;background:var(--paper);border-bottom:1px solid var(--s200);transition:border-color .3s,box-shadow .3s}
+.nav.scrolled{border-bottom-color:var(--s300);box-shadow:0 4px 24px rgba(10,10,10,.06)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{text-decoration:none;display:flex;align-items:center}
+.nav-logo svg{height:24px;width:auto}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--ff-b);font-weight:600;font-size:15px;padding:12px 22px;border:1.5px solid var(--ink);background:var(--ink);color:var(--paper);border-radius:var(--r-pill);cursor:pointer;text-decoration:none;white-space:nowrap;line-height:1.25;transition:background .15s,color .15s,transform .1s}
+.btn:hover{background:var(--acid);color:var(--ink)}
+.btn:active{transform:translateY(1px)}
+.btn:focus-visible{outline:3px solid var(--acid);outline-offset:2px}
+.btn.acid{background:var(--acid);color:var(--ink);border-color:var(--ink)}
+.btn.acid:hover{background:var(--ink);color:var(--acid)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--s200)}
+.btn.ghost:hover{border-color:var(--ink)}
+.btn.ghost-inv{background:transparent;color:var(--s300);border-color:var(--ink-700)}
+.btn.ghost-inv:hover{background:var(--ink-700);color:var(--paper)}
+.btn.lg{padding:16px 30px;font-size:17px}
+.btn.sm{padding:8px 16px;font-size:13px}
+.arrow{transition:transform .15s;display:inline-block}
+.btn:hover .arrow{transform:translateX(4px)}
+.mag-wrap{display:inline-block}
+
+/* ── HERO ── */
+.s-hero{background:var(--ink);color:var(--paper);padding:clamp(80px,10vw,136px) 0 clamp(56px,7vw,96px);overflow:hidden}
+.hero-eyebrow{color:var(--s500);margin-bottom:24px}
+.hero-h1{font-family:var(--ff-d);font-weight:700;letter-spacing:-.044em;line-height:.88;font-size:clamp(48px,8.5vw,112px);margin-bottom:32px;color:var(--paper)}
+.hero-line{display:block;overflow:hidden}
+.hero-line-inner{display:block}
+.hero-h1 em{font-style:normal;color:var(--acid)}
+.hero-sub{font-size:clamp(16px,2vw,20px);line-height:1.65;color:var(--s300);max-width:54ch;margin-bottom:40px}
+.hero-sub strong{color:var(--paper);font-weight:600}
+.hero-cta-wrap{display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.hero-micro{font-family:var(--ff-m);font-size:11px;color:var(--s500);letter-spacing:.06em}
+
+/* Phase mini-strip in hero */
+.hero-phases{margin-top:64px;padding-top:36px;border-top:1px solid var(--ink-700)}
+.hero-phases-label{font-family:var(--ff-m);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--s500);margin-bottom:24px}
+.hphases-track{display:grid;grid-template-columns:repeat(6,1fr);position:relative;gap:0}
+.hphases-line{position:absolute;top:18px;left:calc(100%/12);right:calc(100%/12);height:1px;background:var(--ink-700);pointer-events:none;overflow:hidden}
+.hphases-line-fill{position:absolute;left:0;top:0;bottom:0;width:16.66%;background:var(--acid);transition:width .6s cubic-bezier(.4,0,.2,1)}
+.hphase{display:flex;flex-direction:column;align-items:center;gap:8px;position:relative;z-index:1;cursor:pointer;padding:0 4px 8px;border:none;background:none}
+.hphase-bubble{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--ink-700);background:var(--ink);display:flex;align-items:center;justify-content:center;font-family:var(--ff-m);font-size:12px;font-weight:500;color:var(--s500);transition:all .25s}
+.hphase-name{font-family:var(--ff-m);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--s500);text-align:center;transition:color .25s}
+.hphase.active .hphase-bubble{background:var(--acid);border-color:var(--acid);color:var(--ink);font-weight:700;transform:scale(1.15)}
+.hphase.active .hphase-name{color:var(--paper);font-weight:600}
+.hphase:not(.active):hover .hphase-bubble{border-color:var(--s300);color:var(--s300);transform:scale(1.05)}
+.hphase.done .hphase-bubble{background:var(--ink-700);border-color:var(--ink-700);color:var(--s300)}
+
+/* ── MARQUEE ── */
+.marquee-strip{background:var(--ink-800);border-top:1px solid var(--ink-700);border-bottom:1px solid var(--ink-700);padding:13px 0;overflow:hidden;white-space:nowrap}
+.marquee-track{display:inline-flex}
+.marquee-item{display:inline-flex;align-items:center;gap:20px;font-family:var(--ff-m);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--s500);padding:0 28px}
+.marquee-item em{font-style:normal;color:var(--acid);font-weight:700}
+.marquee-dot{width:4px;height:4px;border-radius:50%;background:var(--ink-700);flex-shrink:0}
+
+/* ── STATS ── */
+.stats-strip{background:var(--paper-50);border-bottom:1px solid var(--s200);padding:40px 0}
+.stats-inner{display:flex;border-left:1px solid var(--s200)}
+.stat-item{flex:1;padding:20px 32px;border-right:1px solid var(--s200)}
+.stat-num{font-family:var(--ff-d);font-weight:700;font-size:clamp(36px,4vw,56px);letter-spacing:-.04em;line-height:1;color:var(--ink);margin-bottom:6px}
+.stat-num span{color:var(--ember)}
+.stat-label{font-family:var(--ff-m);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--s500)}
+
+/* ── SECTIONS shared ── */
+.s-sec{padding:clamp(64px,8vw,120px) 0}
+.s-head{margin-bottom:56px}
+.s-eyebrow{margin-bottom:12px}
+.s-h2{font-family:var(--ff-d);font-weight:700;letter-spacing:-.03em;font-size:clamp(26px,3.5vw,50px);line-height:1.06}
+.s-sub{font-size:15px;color:var(--s500);max-width:56ch;margin-top:10px}
+
+/* ── PROBLEMA ── */
+.problema-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--s200);border-left:1px solid var(--s200)}
+.pcard{padding:36px 32px;border-right:1px solid var(--s200);border-bottom:1px solid var(--s200);position:relative;overflow:hidden;transition:background .2s}
+.pcard::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--ember);transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.4,0,.2,1)}
+.pcard:hover{background:var(--paper-50)}
+.pcard:hover::after{transform:scaleX(1)}
+.pcard-num{font-family:var(--ff-m);font-size:11px;letter-spacing:.12em;color:var(--s500);margin-bottom:14px}
+.pcard-text{font-size:15.5px;line-height:1.7}
+
+/* ── RUTA ── */
+.s-ruta{background:var(--paper-50);border-top:1px solid var(--s200);border-bottom:1px solid var(--s200)}
+.ruta-inner{display:grid;grid-template-columns:1fr 2fr;gap:80px;align-items:start}
+.ruta-intro{font-size:16px;line-height:1.7;color:var(--s500);margin-bottom:32px;max-width:40ch}
+.fases-table{width:100%;border-collapse:collapse}
+.fases-table tr{border-bottom:1px solid var(--s200)}
+.fases-table tr:last-child{border-bottom:none}
+.fases-table td{padding:16px 20px;font-size:14px;vertical-align:middle}
+.fases-table .fn{font-family:var(--ff-m);font-size:10px;letter-spacing:.14em;color:var(--s500);white-space:nowrap}
+.fases-table .fname{font-family:var(--ff-d);font-weight:700;font-size:16px;letter-spacing:-.02em}
+.fases-table .fq{color:var(--s500);font-size:14px;line-height:1.5}
+.fases-table tr.is-active{background:var(--ink)}
+.fases-table tr.is-active .fn{color:var(--acid)}
+.fases-table tr.is-active .fname{color:var(--paper)}
+.fases-table tr.is-active .fq{color:var(--s300)}
+.fases-table tr.is-active td:first-child{border-left:3px solid var(--acid)}
+
+/* ── GUIA ── */
+.guia-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--s200);border:1px solid var(--s200);border-radius:var(--r-md);overflow:hidden;margin-top:48px}
+.gdel{background:var(--paper-50);padding:36px 32px;position:relative;overflow:hidden;transition:background .2s}
+.gdel:hover{background:var(--paper)}
+.gdel-num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:var(--ink);color:var(--acid);font-family:var(--ff-m);font-size:13px;font-weight:700;border-radius:var(--r-md);margin-bottom:16px;transition:transform .2s}
+.gdel:hover .gdel-num{transform:rotate(-6deg) scale(1.1)}
+.gdel-title{font-family:var(--ff-d);font-weight:700;font-size:20px;letter-spacing:-.02em;margin-bottom:10px}
+.gdel-text{font-size:15px;line-height:1.68;color:var(--s500)}
+.guia-format{display:flex;gap:8px;margin-top:32px;flex-wrap:wrap}
+.fmt-chip{font-family:var(--ff-m);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border:1px solid var(--ink);border-radius:var(--r-pill);color:var(--ink)}
+
+/* ── PARA ── */
+.s-para{background:var(--paper-50);border-top:1px solid var(--s200);border-bottom:1px solid var(--s200)}
+.para-grid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--s200);border-left:1px solid var(--s200)}
+.para-col{padding:40px 36px;border-right:1px solid var(--s200);border-bottom:1px solid var(--s200)}
+.para-col-label{font-family:var(--ff-m);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:8px;margin-bottom:24px;color:var(--s500)}
+.para-col.yes .para-col-label{color:var(--ink)}
+.para-dot{width:7px;height:7px;border-radius:50%;background:currentColor;flex-shrink:0}
+.para-list{list-style:none;display:grid;gap:12px}
+.para-list li{font-size:15px;line-height:1.6;padding-left:18px;position:relative}
+.para-list li::before{content:'—';position:absolute;left:0;font-family:var(--ff-m);color:var(--s500)}
+.para-col.yes .para-list li::before{color:var(--ink)}
+
+/* ── CAPTURA (4 states) ── */
+.s-captura{background:var(--ink);color:var(--paper);padding:clamp(64px,8vw,120px) 0;min-height:580px;display:flex;align-items:center}
+.captura-wrap{max-width:680px;margin:0 auto;width:100%;position:relative}
+.cstate{display:none}
+.cstate.active{display:block}
+
+/* State 1 - email */
+.c-headline{font-family:var(--ff-d);font-weight:700;letter-spacing:-.044em;font-size:clamp(36px,5vw,64px);line-height:.92;margin-bottom:16px;color:var(--paper)}
+.c-headline em{font-style:normal;color:var(--acid)}
+.c-sub{font-size:17px;color:var(--s300);line-height:1.6;margin-bottom:36px}
+.form-row{display:flex;gap:8px}
+.form-input{flex:1;min-width:0;height:52px;padding:0 20px;font-family:var(--ff-b);font-size:16px;background:var(--ink-700);color:var(--paper);border:1.5px solid var(--ink-700);border-radius:var(--r-pill);outline:none;transition:border-color .15s}
+.form-input::placeholder{color:var(--s500)}
+.form-input:focus{border-color:var(--s300)}
+.form-input.err{border-color:var(--ember)}
+.form-btn{height:52px;padding:0 24px;font-family:var(--ff-b);font-weight:600;font-size:15px;background:var(--acid);color:var(--ink);border:1.5px solid var(--acid);border-radius:var(--r-pill);cursor:pointer;white-space:nowrap;transition:background .15s,color .15s}
+.form-btn:hover{background:var(--paper);color:var(--ink)}
+.form-trust{font-family:var(--ff-m);font-size:11px;color:var(--s500);letter-spacing:.06em;margin-top:14px}
+
+/* State 2 - quiz */
+.quiz-progress-wrap{margin-bottom:40px}
+.quiz-progress-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.quiz-progress-label{font-family:var(--ff-m);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--s500)}
+.quiz-progress-count{font-family:var(--ff-m);font-size:11px;color:var(--s300)}
+.quiz-progress-track{height:2px;background:var(--ink-700);border-radius:2px;overflow:hidden}
+.quiz-progress-fill{height:100%;background:var(--acid);border-radius:2px;transition:width .4s cubic-bezier(.4,0,.2,1)}
+.quiz-q-wrap{overflow:hidden;position:relative;min-height:280px}
+.quiz-q{position:absolute;width:100%;top:0;left:0}
+.quiz-q-text{font-family:var(--ff-d);font-weight:700;font-size:clamp(20px,2.8vw,28px);letter-spacing:-.02em;line-height:1.15;color:var(--paper);margin-bottom:28px}
+.quiz-opts{display:grid;gap:10px}
+.quiz-opt{display:flex;align-items:flex-start;gap:14px;padding:16px 18px;border:1px solid var(--ink-700);border-radius:var(--r-md);background:var(--ink-800);cursor:pointer;text-align:left;font-family:inherit;color:inherit;transition:border-color .15s,background .15s,transform .1s;width:100%}
+.quiz-opt:hover{border-color:var(--s500);background:var(--ink-700);transform:translateX(4px)}
+.quiz-opt.selected{border-color:var(--acid);background:var(--ink-700)}
+.quiz-opt-radio{width:18px;height:18px;border-radius:50%;border:1.5px solid var(--ink-700);flex-shrink:0;margin-top:2px;transition:border-color .15s,background .15s;display:flex;align-items:center;justify-content:center}
+.quiz-opt.selected .quiz-opt-radio{border-color:var(--acid);background:var(--acid)}
+.quiz-opt.selected .quiz-opt-radio::after{content:'';width:6px;height:6px;border-radius:50%;background:var(--ink)}
+.quiz-opt-text{font-size:15px;font-weight:500;color:var(--paper);line-height:1.4}
+.quiz-opt.selected .quiz-opt-text{color:var(--paper)}
+.quiz-nav{display:flex;align-items:center;justify-content:space-between;margin-top:28px}
+.btn-next{opacity:0;pointer-events:none;transition:opacity .25s}
+.btn-next.vis{opacity:1;pointer-events:all}
+
+/* State 3 - result */
+.result-phases-row{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:40px}
+.rphase{display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 8px;border:1px solid var(--ink-700);border-radius:var(--r-md);background:var(--ink-800);transition:all .3s;opacity:.5}
+.rphase.current{border-color:var(--acid);background:var(--ink-700);opacity:1;transform:scale(1.05)}
+.rphase-num{font-family:var(--ff-m);font-size:10px;letter-spacing:.1em;color:var(--s500)}
+.rphase.current .rphase-num{color:var(--acid);font-weight:700}
+.rphase-bubble{width:40px;height:40px;border-radius:50%;background:var(--ink-700);border:1.5px solid var(--ink-700);display:flex;align-items:center;justify-content:center;font-family:var(--ff-m);font-size:12px;font-weight:700;color:var(--s300)}
+.rphase.current .rphase-bubble{background:var(--acid);border-color:var(--acid);color:var(--ink)}
+.rphase-name{font-family:var(--ff-m);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--s500);text-align:center}
+.rphase.current .rphase-name{color:var(--paper)}
+.result-headline{font-family:var(--ff-d);font-weight:700;font-size:clamp(24px,3vw,36px);letter-spacing:-.025em;color:var(--paper);margin-bottom:8px;line-height:1.1}
+.result-subline{font-size:16px;color:var(--acid);font-weight:500;margin-bottom:16px;font-family:var(--ff-m);letter-spacing:.06em}
+.result-body{font-size:16px;color:var(--s300);line-height:1.7;max-width:52ch;margin-bottom:32px}
+
+/* State 4 - download */
+.dl-check{width:64px;height:64px;border-radius:50%;background:var(--acid);display:flex;align-items:center;justify-content:center;margin-bottom:24px}
+.dl-check svg{width:28px;height:28px}
+.dl-title{font-family:var(--ff-d);font-weight:700;font-size:clamp(28px,4vw,48px);letter-spacing:-.03em;color:var(--paper);margin-bottom:12px}
+.dl-sub{font-size:16px;color:var(--s300);line-height:1.65;margin-bottom:32px;max-width:44ch}
+.dl-btn{display:inline-flex;align-items:center;gap:12px;background:var(--acid);color:var(--ink);font-family:var(--ff-d);font-weight:700;font-size:17px;padding:18px 32px;border:none;border-radius:var(--r-pill);cursor:pointer;text-decoration:none;transition:background .15s,transform .1s}
+.dl-btn:hover{background:var(--paper);transform:translateY(-2px)}
+.dl-micro{font-family:var(--ff-m);font-size:11px;color:var(--s500);letter-spacing:.06em;margin-top:16px}
+
+/* ── SOBRE ── */
+.s-sobre{border-top:1px solid var(--s200)}
+.sobre-inner{display:grid;grid-template-columns:2fr 3fr;gap:80px;align-items:start}
+.sobre-h2{font-family:var(--ff-d);font-weight:700;letter-spacing:-.03em;font-size:clamp(24px,2.5vw,38px);line-height:1.1}
+.sobre-body{font-size:18px;line-height:1.7;color:var(--s500);max-width:58ch}
+
+/* ── FOOTER ── */
+.s-footer{background:var(--ink);color:var(--paper);padding:48px 0}
+.footer-top{display:flex;align-items:center;justify-content:space-between;gap:32px;padding-bottom:24px;border-bottom:1px solid var(--ink-700);margin-bottom:24px;flex-wrap:wrap}
+.footer-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.footer-logo svg{height:22px;width:auto}
+.footer-wordmark{font-family:var(--ff-d);font-weight:700;font-size:20px;letter-spacing:-.03em;color:var(--paper)}
+.footer-claim{font-family:var(--ff-m);font-size:10.5px;color:var(--s500);letter-spacing:.1em;text-transform:uppercase}
+.footer-links{display:flex;gap:24px;font-family:var(--ff-m);font-size:11px}
+.footer-links a{color:var(--s500);text-decoration:none;transition:color .15s}
+.footer-links a:hover{color:var(--paper)}
+.footer-legal{font-family:var(--ff-m);font-size:11px;color:var(--s500);letter-spacing:.04em;line-height:1.6}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .nav-logo svg{height:20px}
+  .problema-grid{grid-template-columns:1fr}
+  .ruta-inner{grid-template-columns:1fr;gap:40px}
+  .guia-grid{grid-template-columns:1fr}
+  .para-grid{grid-template-columns:1fr}
+  .sobre-inner{grid-template-columns:1fr;gap:32px}
+  .footer-top{flex-direction:column;align-items:flex-start;gap:16px}
+  .hphases-track{grid-template-columns:repeat(3,1fr)}
+  .hphases-line{display:none}
+  .result-phases-row{grid-template-columns:repeat(3,1fr)}
+  .stats-inner{flex-wrap:wrap}
+}
+@media(max-width:600px){
+  .form-row{flex-direction:column}
+  .form-btn{width:100%;height:50px;justify-content:center}
+  .hphases-track{grid-template-columns:repeat(2,1fr)}
+  .result-phases-row{grid-template-columns:repeat(2,1fr)}
+  .footer-links{flex-direction:column;gap:10px}
+  .stat-item{flex:0 0 50%}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="main-nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="Andamia">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 359.08 64.57" aria-hidden="true">
+          <style>.nl1{fill:#0a0a0a}.nl2{fill:#E5FF00}</style>
+          <path class="nl1" d="M54.1,18.58h12.39v4.19c3.42-3.3,7.63-4.96,12.64-4.96s9.54,1.64,13.24,4.91c3.7,3.28,5.55,7.62,5.55,13.03v28.1h-12.39v-24.94c0-2.85-.87-5.15-2.61-6.92-1.74-1.76-3.86-2.65-6.36-2.65-3.02,0-5.45,1.07-7.3,3.2-1.85,2.14-2.78,4.77-2.78,7.9v23.41h-12.39V18.58Z"/>
+          <g><circle class="nl1" cx="301.21" cy="7.6" r="7.6"/><rect class="nl1" x="294.89" y="18.58" width="12.39" height="45.28"/></g>
+          <path class="nl1" d="M34.85,18.26v2.26c-3.4-1.92-7.32-3.03-11.5-3.03C10.46,17.49,0,27.94,0,40.84s10.46,23.36,23.36,23.36c4.18,0,8.1-1.1,11.5-3.03v2.17h12.39V18.26h-12.39ZM23.36,53.17c-6.81,0-12.32-5.52-12.32-12.32s5.52-12.32,12.32-12.32c5.25,0,9.72,3.29,11.5,7.91.53,1.37.83,2.85.83,4.41s-.3,3.04-.83,4.41c-1.78,4.63-6.25,7.91-11.5,7.91Z"/>
+          <path class="nl1" d="M346.69,18.58v2.26c-3.4-1.92-7.32-3.03-11.5-3.03-12.9,0-23.36,10.46-23.36,23.36s10.46,23.36,23.36,23.36c4.18,0,8.1-1.1,11.5-3.03v2.17h12.39V18.58h-12.39ZM335.19,53.49c-6.81,0-12.32-5.52-12.32-12.32s5.52-12.32,12.32-12.32c5.25,0,9.72,3.29,11.5,7.91.53,1.37.83,2.85.83,4.41s-.3,3.04-.83,4.41c-1.78,4.63-6.25,7.91-11.5,7.91Z"/>
+          <path class="nl1" d="M138.31,0v20.84c-3.4-1.92-7.32-3.03-11.5-3.03-12.9,0-23.36,10.46-23.36,23.36s10.46,23.36,23.36,23.36c4.18,0,8.1-1.1,11.5-3.03v2.17h12.39V0h-12.39ZM126.81,53.49c-6.81,0-12.32-5.52-12.32-12.32s5.52-12.32,12.32-12.32c5.25,0,9.72,3.29,11.5,7.91.53,1.37.83,2.85.83,4.41s-.3,3.04-.83,4.41c-1.78,4.63-6.25,7.91-11.5,7.91Z"/>
+          <path class="nl1" d="M277.77,20.32c-3.14-1.6-6.7-2.51-10.47-2.51-4.29,0-8.31,1.17-11.75,3.21-2.14,1.27-4.05,2.87-5.67,4.73-1.88-2.16-4.16-3.97-6.72-5.31-3.2-1.68-6.84-2.63-10.7-2.63s-7.5.95-10.7,2.63v-1.95h-12.39v22.4h0v22.88h12.39v-23.81c0-5.62,4.22-10.55,9.83-10.96.29-.02.58-.03.88-.03s.59.01.87.03c5.61.41,9.82,5.33,9.82,10.96v23.81h12.39v-24.77c.91-5.68,5.81-10.03,11.75-10.03.28,0,.56,0,.84.03,5.49.38,9.63,5.19,9.63,10.69v24.08h12.39v-22.88c0-5.64-1.89-11.2-5.66-15.4-1.89-2.11-4.17-3.88-6.73-5.18Z"/>
+          <path class="nl2" d="M188.98,33.32c3.8,3.54,8.87,5.74,14.45,5.87v-20.91h-12.53v2.29c-2.69-1.53-5.72-2.53-8.93-2.9.11,5.36,2.13,10.25,5.42,14.02.58.5,1.11,1.04,1.59,1.64Z"/>
+          <path class="nl2" d="M190.89,63.87h12.53v-20.69c-11.69.27-21.15,9.67-21.46,21.39,3.22-.37,6.24-1.37,8.93-2.9v2.19Z"/>
+          <path class="nl2" d="M178.06,17.55c-11.03.71-20,8.98-21.77,19.69v1.82c11.94,0,21.62-9.61,21.77-21.51Z"/>
+          <path class="nl2" d="M178.07,64.22c0-12.03-9.75-21.79-21.78-21.79v2.55c1.7,10.31,10.08,18.37,20.55,19.58h1.22c0-.12.02-.23.02-.35Z"/>
+        </svg>
+      </a>
+      <a href="#captura" class="btn sm">Descargar la guía</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="s-hero" aria-labelledby="hero-h1">
+  <div class="wrap">
+    <p class="eyebrow hero-eyebrow">Andamia · Guía de Claridad · Fase 01 de 06</p>
+    <h1 class="hero-h1" id="hero-h1">
+      <span class="hero-line"><span class="hero-line-inner">Tienes una idea</span></span>
+      <span class="hero-line"><span class="hero-line-inner">de negocio pero</span></span>
+      <span class="hero-line"><span class="hero-line-inner">aún no <em>emprendes.</em></span></span>
+    </h1>
+    <p class="hero-sub">Has visto videos, tomaste el curso, leíste libros pero todavía no sabes por dónde empezar.<br><strong>La Guía de Claridad es el primer paso del sistema para construirlo.</strong></p>
+    <div class="hero-cta-wrap">
+      <div class="mag-wrap">
+        <a href="#captura" class="btn acid lg" id="hero-cta">
+          Descargar la guía — es gratis
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+      <p class="hero-micro">Sin tarjeta. Sin curso de seis horas. Solo tu email y cinco preguntas.</p>
+    </div>
+
+    <div class="hero-phases" aria-label="Vista del sistema: seis fases">
+      <p class="hero-phases-label">La Ruta del Emprendedor · 6 fases · 24 pasos</p>
+      <div class="hphases-track" role="group">
+        <div class="hphases-line" aria-hidden="true"><div class="hphases-line-fill" id="hphaseFill"></div></div>
+        <button class="hphase active" data-p="0" aria-label="Fase 01 Claridad — activa">
+          <div class="hphase-bubble">01</div>
+          <span class="hphase-name">Claridad</span>
+        </button>
+        <button class="hphase" data-p="1" aria-label="Fase 02 Modelo">
+          <div class="hphase-bubble">02</div>
+          <span class="hphase-name">Modelo</span>
+        </button>
+        <button class="hphase" data-p="2" aria-label="Fase 03 Validación">
+          <div class="hphase-bubble">03</div>
+          <span class="hphase-name">Validación</span>
+        </button>
+        <button class="hphase" data-p="3" aria-label="Fase 04 Estructura">
+          <div class="hphase-bubble">04</div>
+          <span class="hphase-name">Estructura</span>
+        </button>
+        <button class="hphase" data-p="4" aria-label="Fase 05 Lanzamiento">
+          <div class="hphase-bubble">05</div>
+          <span class="hphase-name">Lanzamiento</span>
+        </button>
+        <button class="hphase" data-p="5" aria-label="Fase 06 Operación">
+          <div class="hphase-bubble">06</div>
+          <span class="hphase-name">Operación</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-track" id="mTrack">
+    <span class="marquee-item"><em>Guía de Claridad</em><span class="marquee-dot"></span></span>
+    <span class="marquee-item">Fase 01<span class="marquee-dot"></span></span>
+    <span class="marquee-item"><em>Gratis</em><span class="marquee-dot"></span></span>
+    <span class="marquee-item">PDF + Excel<span class="marquee-dot"></span></span>
+    <span class="marquee-item"><em>Declaración de problema</em><span class="marquee-dot"></span></span>
+    <span class="marquee-item">Perfil de cliente<span class="marquee-dot"></span></span>
+    <span class="marquee-item"><em>Score de viabilidad</em><span class="marquee-dot"></span></span>
+    <span class="marquee-item">Inventario de capacidades<span class="marquee-dot"></span></span>
+    <span class="marquee-item"><em>La Ruta del Emprendedor</em><span class="marquee-dot"></span></span>
+    <span class="marquee-item">6 fases · 24 pasos<span class="marquee-dot"></span></span>
+    <span class="marquee-item"><em>Guía de Claridad</em><span class="marquee-dot"></span></span>
+    <span class="marquee-item">Fase 01<span class="marquee-dot"></span></span>
+    <span class="marquee-item"><em>Gratis</em><span class="marquee-dot"></span></span>
+    <span class="marquee-item">PDF + Excel<span class="marquee-dot"></span></span>
+    <span class="marquee-item"><em>Declaración de problema</em><span class="marquee-dot"></span></span>
+    <span class="marquee-item">Perfil de cliente<span class="marquee-dot"></span></span>
+    <span class="marquee-item"><em>Score de viabilidad</em><span class="marquee-dot"></span></span>
+    <span class="marquee-item">Inventario de capacidades<span class="marquee-dot"></span></span>
+    <span class="marquee-item"><em>La Ruta del Emprendedor</em><span class="marquee-dot"></span></span>
+    <span class="marquee-item">6 fases · 24 pasos<span class="marquee-dot"></span></span>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="wrap">
+    <div class="stats-inner">
+      <div class="stat-item"><p class="stat-num" data-target="4">0<span> herramientas</span></p><p class="stat-label">En la Guía de Claridad</p></div>
+      <div class="stat-item"><p class="stat-num" data-target="6">0<span> fases</span></p><p class="stat-label">En La Ruta del Emprendedor</p></div>
+      <div class="stat-item"><p class="stat-num" data-target="24">0<span> pasos</span></p><p class="stat-label">Con entregables concretos</p></div>
+      <div class="stat-item"><p class="stat-num" data-target="27">$0<span> USD</span></p><p class="stat-label">Valor del kit · hoy gratis</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- PROBLEMA -->
+<section class="s-sec s-problema" aria-labelledby="prob-h2">
+  <div class="wrap">
+    <h2 class="s-h2" id="prob-h2" style="max-width:24ch;margin-bottom:48px">Si reconoces alguna de estas situaciones, estás en el lugar correcto.</h2>
+    <div class="problema-grid">
+      <div class="pcard"><p class="pcard-num">01</p><p class="pcard-text">Has visto videos, tomado cursos y leído posts sobre emprendimiento. Sabes más teoría que hace seis meses. Tu negocio sigue siendo una idea.</p></div>
+      <div class="pcard"><p class="pcard-num">02</p><p class="pcard-text">No sabes si tu idea tiene mercado real antes de invertir tiempo y dinero en construirla. La incertidumbre paraliza más que la falta de recursos.</p></div>
+      <div class="pcard"><p class="pcard-num">03</p><p class="pcard-text">Quieres un paso concreto, no otro video de motivación. Saber exactamente qué hacer primero, segundo y tercero.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- RUTA -->
+<section class="s-sec s-ruta" aria-labelledby="ruta-h2">
+  <div class="wrap">
+    <div class="ruta-inner">
+      <div>
+        <p class="eyebrow s-eyebrow" style="margin-bottom:16px">La Ruta del Emprendedor</p>
+        <h2 class="s-h2" id="ruta-h2">Construir un negocio tiene seis fases. La mayoría se atasca en la primera.</h2>
+        <p class="ruta-intro">La Ruta es el sistema completo. Cada fase tiene pasos concretos y un entregable. Sin entregable, no hay avance. La Fase 1 — Claridad — es la base de todo lo que viene después.</p>
+        <a href="#captura" class="btn">Obtener la Guía de Claridad <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+      <div>
+        <table class="fases-table" aria-label="Las seis fases de La Ruta del Emprendedor">
+          <tbody>
+            <tr class="is-active" aria-label="Fase actual con guía disponible">
+              <td class="fn">Fase 01</td>
+              <td class="fname">Claridad</td>
+              <td class="fq">¿El problema es real, el cliente es específico y hay mercado?</td>
+            </tr>
+            <tr><td class="fn">Fase 02</td><td class="fname">Modelo</td><td class="fq">¿Cómo genero ingresos y cuánto cuesta operar?</td></tr>
+            <tr><td class="fn">Fase 03</td><td class="fname">Validación</td><td class="fq">¿Hay personas dispuestas a pagar antes de construir todo?</td></tr>
+            <tr><td class="fn">Fase 04</td><td class="fname">Estructura</td><td class="fq">¿Cómo formalizo para que el negocio no dependa solo de mí?</td></tr>
+            <tr><td class="fn">Fase 05</td><td class="fname">Lanzamiento</td><td class="fq">¿Cómo llego al mercado y cierro las primeras ventas?</td></tr>
+            <tr><td class="fn">Fase 06</td><td class="fname">Operación</td><td class="fq">¿Cómo consolido y preparo el siguiente paso?</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GUIA -->
+<section class="s-sec" aria-labelledby="guia-h2">
+  <div class="wrap">
+    <div class="s-head">
+      <p class="eyebrow s-eyebrow" style="margin-bottom:12px">La Guía de Claridad</p>
+      <h2 class="s-h2" id="guia-h2" style="max-width:32ch">Cuatro herramientas para saber si tu idea tiene base real.</h2>
+      <p class="s-sub">No es un PDF de motivación. Es un sistema de trabajo. Se usa, no se lee. Al terminar tienes cuatro entregables escritos y verificados.</p>
+    </div>
+    <div class="guia-grid">
+      <div class="gdel">
+        <div class="gdel-num" aria-hidden="true">01</div>
+        <h3 class="gdel-title">Declaración de problema</h3>
+        <p class="gdel-text">El problema que resuelves en una sola oración verificada. Si no puedes escribirlo en una oración, no está definido todavía.</p>
+      </div>
+      <div class="gdel">
+        <div class="gdel-num" aria-hidden="true">02</div>
+        <h3 class="gdel-title">Perfil de cliente</h3>
+        <p class="gdel-text">Ocho variables que definen exactamente a quién le vendes. No un segmento — una persona con contexto, situación y disposición a pagar.</p>
+      </div>
+      <div class="gdel">
+        <div class="gdel-num" aria-hidden="true">03</div>
+        <h3 class="gdel-title">Score de viabilidad</h3>
+        <p class="gdel-text">Doce preguntas que producen un score de 0 a 100. Confirma si hay demanda real antes de invertir tiempo y dinero en construir.</p>
+      </div>
+      <div class="gdel">
+        <div class="gdel-num" aria-hidden="true">04</div>
+        <h3 class="gdel-title">Inventario de capacidades</h3>
+        <p class="gdel-text">Lo que tienes hoy y lo que necesitas conseguir antes de operar. Sin este mapa, las brechas aparecen cuando ya no hay margen.</p>
+      </div>
+    </div>
+    <div style="margin-top:32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px">
+      <div class="guia-format">
+        <span class="fmt-chip">Guía PDF</span>
+        <span class="fmt-chip">Workbook Excel</span>
+        <span class="fmt-chip">Reporte automático</span>
+        <span class="fmt-chip">Fórmulas funcionales</span>
+      </div>
+      <a href="#captura" class="btn acid">Quiero la guía — gratis <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- PARA -->
+<section class="s-sec s-para" aria-labelledby="para-h2">
+  <div class="wrap">
+    <h2 class="s-h2" id="para-h2" style="margin-bottom:48px">Es para ti si reconoces alguna de estas situaciones.</h2>
+    <div class="para-grid">
+      <div class="para-col yes">
+        <p class="para-col-label"><span class="para-dot" aria-hidden="true"></span>Es para ti si</p>
+        <ul class="para-list">
+          <li>Tienes una idea de negocio y no sabes exactamente por dónde empezar</li>
+          <li>Has consumido contenido sobre emprendimiento pero sigues sin avanzar</li>
+          <li>No sabes si tu idea tiene mercado real antes de invertir en construirla</li>
+          <li>Quieres un sistema concreto, no más motivación ni más teoría</li>
+          <li>Tienes trabajo fijo y quieres construir algo propio con el tiempo disponible</li>
+        </ul>
+      </div>
+      <div class="para-col no">
+        <p class="para-col-label"><span class="para-dot" aria-hidden="true"></span>No es para ti si</p>
+        <ul class="para-list">
+          <li>Buscas una fórmula de ingresos rápidos o pasivos</li>
+          <li>Esperas que alguien te diga exactamente qué negocio poner</li>
+          <li>No estás dispuesto a dedicar tiempo a construir con criterio</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPTURA — 4 states -->
+<section class="s-captura" id="captura" aria-label="Descarga la Guía de Claridad">
+  <div class="wrap" style="width:100%">
+    <div class="captura-wrap">
+
+      <!-- STATE 1: EMAIL -->
+      <div class="cstate active" id="s1">
+        <h2 class="c-headline">Descarga la<br><em>Guía de Claridad.</em><br>Gratis.</h2>
+        <p class="c-sub">Ingresa tu email, responde cinco preguntas y descarga la guía completa — PDF y workbook Excel incluidos.</p>
+        <form id="email-form" novalidate>
+          <div class="form-row">
+            <input type="email" id="email-inp" class="form-input" placeholder="tucorreo@ejemplo.com" autocomplete="email" required aria-label="Tu correo electrónico"/>
+            <button type="submit" class="form-btn">Continuar →</button>
+          </div>
+          <p class="form-trust">Sin spam. Sin venta automática. Solo la guía en tu descarga.</p>
+        </form>
+      </div>
+
+      <!-- STATE 2: QUIZ -->
+      <div class="cstate" id="s2">
+        <div class="quiz-progress-wrap">
+          <div class="quiz-progress-meta">
+            <span class="quiz-progress-label">Diagnóstico de fase</span>
+            <span class="quiz-progress-count" id="q-count">1 / 5</span>
+          </div>
+          <div class="quiz-progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="20">
+            <div class="quiz-progress-fill" id="q-prog" style="width:20%"></div>
+          </div>
+        </div>
+        <div class="quiz-q-wrap" id="q-wrap" style="min-height:320px"></div>
+        <div class="quiz-nav">
+          <button class="btn ghost-inv sm" id="q-prev" onclick="prevQ()">← Anterior</button>
+          <button class="btn acid sm btn-next" id="q-next" onclick="nextQ()">Siguiente <span class="arrow">→</span></button>
+        </div>
+      </div>
+
+      <!-- STATE 3: RESULT -->
+      <div class="cstate" id="s3">
+        <div class="result-phases-row" id="r-phases" aria-label="Tu posición en La Ruta del Emprendedor"></div>
+        <p class="result-subline" id="r-sub"></p>
+        <h3 class="result-headline" id="r-headline"></h3>
+        <p class="result-body" id="r-body"></p>
+        <button class="btn acid lg" onclick="showDownload()">Ver mi Guía de Claridad <span class="arrow">→</span></button>
+      </div>
+
+      <!-- STATE 4: DOWNLOAD -->
+      <div class="cstate" id="s4">
+        <div class="dl-check" aria-hidden="true">
+          <svg viewBox="0 0 28 28" fill="none" stroke="#0A0A0A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 14l6 6L23 8"/></svg>
+        </div>
+        <h3 class="dl-title">Tu guía está lista.</h3>
+        <p class="dl-sub">Descarga el PDF y el workbook Excel. Están listos para usar hoy.</p>
+        <a href="#" class="dl-btn" id="dl-btn" download>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10M5 9l5 5 5-5"/><path d="M3 17h14"/></svg>
+          Descargar Guía de Claridad
+        </a>
+        <p class="dl-micro">Revisa tu bandeja — te enviamos un enlace de respaldo.<br>En unos días te escribimos para saber cómo te fue. Tu experiencia ayuda a mejorar el sistema.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section class="s-sec s-sobre">
+  <div class="wrap">
+    <div class="sobre-inner">
+      <h2 class="sobre-h2">Andamia construye sistemas para emprendedores en LATAM.</h2>
+      <p class="sobre-body">No cursos. No motivación. Herramientas descargables que se usan el mismo día que se reciben. La Guía de Claridad es la primera herramienta de la serie. Cada kit corresponde a una fase de La Ruta del Emprendedor.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="s-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <a href="/" class="footer-logo" aria-label="Andamia">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 47.14 47.02" aria-hidden="true">
+          <path fill="#E5FF00" d="M32.69,15.77c3.8,3.54,8.87,5.74,14.45,5.87V.73h-12.53v2.29C31.92,1.48,28.9.48,25.68.11c.11,5.36,2.13,10.25,5.42,14.02.58.5,1.11,1.04,1.59,1.64Z"/>
+          <path fill="#E5FF00" d="M34.61,46.32h12.53v-20.69c-11.69.27-21.15,9.67-21.46,21.39,3.22-.37,6.24-1.37,8.93-2.9v2.19Z"/>
+          <path fill="#E5FF00" d="M21.77,0C10.74.71,1.77,8.98,0,19.69v1.82c11.94,0,21.62-9.61,21.77-21.51Z"/>
+          <path fill="#E5FF00" d="M21.78,46.68c0-12.03-9.75-21.79-21.78-21.79v2.55c1.7,10.31,10.08,18.37,20.55,19.58h1.22c0-.12.02-.23.02-.35Z"/>
+        </svg>
+        <span class="footer-wordmark">andamia</span>
+      </a>
+      <p class="footer-claim">Construye tu negocio con método, no con suerte.</p>
+      <nav class="footer-links" aria-label="Links del footer">
+        <a href="#">Política de privacidad</a>
+        <a href="mailto:hola@andamia.co">hola@andamia.co</a>
+      </nav>
+    </div>
+    <p class="footer-legal">La Guía de Claridad es una herramienta de trabajo. Los resultados dependen de su aplicación.</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9d/6/H6RVn+eC3KSMoqRMOB7LQmaSEFQNE86WU+MNMdMvOGQZ5KHFnSWqkBXzOIrv1HqZnGA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXIuf2MkQfJIbOiA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+(function(){
+'use strict';
+
+/* ─── DATA ──────────────────────────────────────────────── */
+var Qs=[
+  {text:'¿Puedes describir en una sola oración el problema que resuelves y para quién lo resuelves?',
+   opts:['Sí, lo tengo escrito y verificado.','Tengo una idea pero no está completamente clara.','Aún estoy explorando qué negocio construir.']},
+  {text:'¿Tienes definido cómo generas ingresos, a qué precio y cuánto te cuesta producir lo que vendes?',
+   opts:['Sí, tengo modelo de ingresos y estructura de costos.','Tengo el producto pero el modelo no está completo.','Aún estoy definiendo qué vender.']},
+  {text:'¿Has conseguido al menos 3 clientes reales que hayan pagado dinero real?',
+   opts:['Sí, tengo ventas reales documentadas.','Hay interés pero ninguna venta cerrada todavía.','No he salido al mercado a vender.']},
+  {text:'¿Tu negocio tiene figura legal, finanzas separadas y procesos de entrega documentados?',
+   opts:['Sí, está formalizado y opera con sistema.','Parcialmente. Falta formalizar algunas áreas.','No, aún no he llegado a esa etapa.']},
+  {text:'¿Has ejecutado una campaña de lanzamiento y cerrado tus primeras 10 ventas con un canal activo?',
+   opts:['Sí, tengo canal activo y ventas consistentes.','Lancé pero no alcanzo ese volumen todavía.','Estoy preparando el lanzamiento.']}
+];
+
+var PHASES=[
+  {num:'01',name:'Claridad'},
+  {num:'02',name:'Modelo'},
+  {num:'03',name:'Validación'},
+  {num:'04',name:'Estructura'},
+  {num:'05',name:'Lanzamiento'},
+  {num:'06',name:'Operación'}
+];
+
+var RESULTS=[
+  {sub:'Estás en la Fase 1 · Claridad.',
+   headline:'Es exactamente donde empieza el sistema.',
+   body:'La Guía de Claridad es la herramienta exacta para esta etapa. Cuatro pasos para definir el problema, el cliente, la viabilidad y los recursos. Al terminar sabes si avanzar o ajustar.'},
+  {sub:'Estás en la Fase 2 · Modelo.',
+   headline:'La guía te muestra desde dónde partes.',
+   body:'La claridad es la base de todo lo que sigue. Aunque hayas avanzado, la guía te permite verificar que esa base está bien construida antes de continuar.'},
+  {sub:'Estás en la Fase 3 · Validación.',
+   headline:'La guía te ayuda a verificar que la base está sólida.',
+   body:'Antes de escalar, vale la pena confirmar que la Fase 1 está bien definida. La guía toma menos de dos horas y puede ahorrarte semanas de trabajo mal orientado.'},
+  {sub:'Estás en la Fase 4 · Estructura.',
+   headline:'La guía te ayuda a verificar que la base está sólida.',
+   body:'Los problemas de estructura muchas veces tienen raíz en una definición incompleta del cliente o del problema. La guía es la forma más rápida de descartarlo.'},
+  {sub:'Estás en la Fase 5 · Lanzamiento.',
+   headline:'La guía te ayuda a verificar que la base está sólida.',
+   body:'Un lanzamiento con claridad mal definida cuesta más de lo que debería. La guía toma dos horas y confirma que el foundation es correcto.'},
+  {sub:'Estás en la Fase 6 · Operación.',
+   headline:'La guía te ayuda a verificar que la base está sólida.',
+   body:'Cuando el negocio opera, revisar la claridad original ayuda a identificar si el cliente, el problema o la propuesta de valor ha derivado. La guía lo confirma en dos horas.'}
+];
+
+/* ─── STATE ──────────────────────────────────────────────── */
+var answers=new Array(5).fill(-1);
+var curQ=0;
+var userEmail='';
+
+function calcPhase(a){for(var i=0;i<a.length;i++){if(a[i]>0)return i;}return 5;}
+
+/* ─── GSAP SETUP ─────────────────────────────────────────── */
+gsap.registerPlugin(ScrollTrigger);
+
+/* ─── HERO ENTRANCE ──────────────────────────────────────── */
+var htl=gsap.timeline({defaults:{ease:'power3.out'}});
+htl
+  .from('.hero-eyebrow',{y:20,opacity:0,duration:.6})
+  .from('.hero-line-inner',{y:'110%',opacity:0,duration:.9,stagger:.1,ease:'power4.out'},'-=.3')
+  .from('.hero-sub',{y:28,opacity:0,duration:.7},'-=.4')
+  .from('.hero-cta-wrap',{y:24,opacity:0,duration:.6},'-=.35')
+  .from('.hero-phases',{y:40,opacity:0,duration:.8},'-=.3');
+
+/* ─── SCROLL REVEALS ─────────────────────────────────────── */
+function reveal(sel,props,stag){
+  var els=document.querySelectorAll(sel);
+  if(!els.length)return;
+  gsap.from(els,Object.assign({scrollTrigger:{trigger:els[0],start:'top 88%',once:true},duration:.75,ease:'power3.out',stagger:stag||0,clearProps:'all'},props));
+}
+reveal('.pcard',{y:52,opacity:0},.1);
+reveal('.ruta-inner>div',{y:40,opacity:0},.15);
+reveal('.fases-table tr',{x:-24,opacity:0},.07);
+reveal('.gdel',{y:44,opacity:0},.1);
+reveal('.para-col',{x:-40,opacity:0},.15);
+reveal('.sobre-inner>*',{y:36,opacity:0},.15);
+reveal('.stats-inner .stat-item',{y:24,opacity:0},.08);
+
+/* ─── NAV SCROLL ─────────────────────────────────────────── */
+ScrollTrigger.create({start:80,onUpdate:function(s){document.getElementById('main-nav').classList.toggle('scrolled',s.progress>0);}});
+
+/* ─── MARQUEE ────────────────────────────────────────────── */
+var mt=document.getElementById('mTrack');
+if(mt){
+  var mc=mt.cloneNode(true);
+  mt.parentNode.appendChild(mc);
+  var mw=mt.scrollWidth;
+  var mx=0,mhov=false;
+  document.querySelector('.marquee-strip').addEventListener('mouseenter',function(){mhov=true;});
+  document.querySelector('.marquee-strip').addEventListener('mouseleave',function(){mhov=false;});
+  gsap.ticker.add(function(){
+    if(!mhov){mx-=.55;if(Math.abs(mx)>=mw)mx=0;gsap.set('.marquee-track',{x:mx});}
+  });
+}
+
+/* ─── STATS COUNT-UP ─────────────────────────────────────── */
+document.querySelectorAll('.stat-num').forEach(function(el){
+  var target=parseInt(el.dataset.target,10);
+  var prefix=el.innerHTML.startsWith('$')?'$':'';
+  var suffix=el.querySelector('span')?el.querySelector('span').outerHTML:'';
+  var obj={v:0};
+  gsap.to(obj,{v:target,duration:1.4,ease:'power2.out',
+    scrollTrigger:{trigger:el,start:'top 85%',once:true},
+    onUpdate:function(){el.innerHTML=prefix+Math.round(obj.v)+suffix;}
+  });
+});
+
+/* ─── HERO PHASE WIDGET ──────────────────────────────────── */
+var hphases=document.querySelectorAll('.hphase');
+var hphaseFill=document.getElementById('hphaseFill');
+var hcur=0,hauto=null;
+
+function setHPhase(i,user){
+  hcur=i;
+  hphases.forEach(function(b,j){
+    b.classList.toggle('active',j===i);
+    b.classList.toggle('done',j<i);
+  });
+  if(hphaseFill)hphaseFill.style.width=(i/5*100)+'%';
+  if(user){clearTimeout(hauto);startHAuto();}
+}
+
+function startHAuto(){
+  hauto=setTimeout(function tick(){
+    setHPhase((hcur+1)%6,false);
+    hauto=setTimeout(tick,3200);
+  },3200);
+}
+
+hphases.forEach(function(b,i){b.addEventListener('click',function(){setHPhase(i,true);});});
+htl.call(function(){setHPhase(0,false);startHAuto();});
+
+/* Pulse animation on Fase 01 bubble */
+gsap.to('.hphase[data-p="0"] .hphase-bubble',{
+  boxShadow:'0 0 0 8px rgba(229,255,0,.2)',
+  duration:1.2,repeat:-1,yoyo:true,ease:'sine.inOut'
+});
+
+/* ─── MAGNETIC CTA ───────────────────────────────────────── */
+var mwrap=document.querySelector('.mag-wrap');
+var mbtn=document.getElementById('hero-cta');
+if(mwrap&&mbtn){
+  mwrap.addEventListener('mousemove',function(e){
+    var r=mwrap.getBoundingClientRect();
+    var dx=(e.clientX-r.left-r.width/2)*.35;
+    var dy=(e.clientY-r.top-r.height/2)*.35;
+    gsap.to(mbtn,{x:dx,y:dy,duration:.4,ease:'power2.out'});
+  });
+  mwrap.addEventListener('mouseleave',function(){
+    gsap.to(mbtn,{x:0,y:0,duration:.5,ease:'elastic.out(1,.5)'});
+  });
+}
+
+/* ─── CAPTURA STATE MACHINE ──────────────────────────────── */
+function switchState(fromId,toId,dir){
+  var from=document.getElementById(fromId);
+  var to=document.getElementById(toId);
+  var dx=dir==='forward'?-60:60;
+  gsap.to(from,{opacity:0,x:dx,duration:.3,ease:'power2.in',onComplete:function(){
+    from.classList.remove('active');
+    from.style.display='none';
+    to.style.display='block';
+    to.classList.add('active');
+    gsap.fromTo(to,{opacity:0,x:-dx},{opacity:1,x:0,duration:.35,ease:'power2.out'});
+  }});
+}
+
+/* Email form */
+document.getElementById('email-form').addEventListener('submit',function(e){
+  e.preventDefault();
+  var inp=document.getElementById('email-inp');
+  var v=inp.value.trim();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){
+    inp.classList.add('err');
+    gsap.fromTo(inp,{x:-8},{x:0,duration:.4,ease:'elastic.out(4,.4)'});
+    return;
+  }
+  userEmail=v;
+  switchState('s1','s2','forward');
+  curQ=0;answers=new Array(5).fill(-1);
+  renderQ();
+});
+document.getElementById('email-inp').addEventListener('input',function(){
+  this.classList.remove('err');
+});
+
+/* Quiz rendering */
+function renderQ(){
+  var qw=document.getElementById('q-wrap');
+  var prog=((curQ+1)/5*100);
+  document.getElementById('q-prog').style.width=prog+'%';
+  document.getElementById('q-prog').parentElement.setAttribute('aria-valuenow',prog);
+  document.getElementById('q-count').textContent=(curQ+1)+' / 5';
+  document.getElementById('q-prev').style.opacity=curQ===0?.3:1;
+  document.getElementById('q-prev').style.pointerEvents=curQ===0?'none':'all';
+  var btn=document.getElementById('q-next');
+  btn.textContent=curQ<4?'Siguiente →':'Ver mi resultado →';
+  btn.classList.toggle('vis',answers[curQ]>=0);
+
+  var q=Qs[curQ];
+  var oldQ=qw.querySelector('.quiz-q');
+  var newDiv=document.createElement('div');
+  newDiv.className='quiz-q';
+  newDiv.innerHTML='<p class="quiz-q-text">'+q.text+'</p><div class="quiz-opts">'+
+    q.opts.map(function(o,i){
+      var sel=answers[curQ]===i?' selected':'';
+      return '<button class="quiz-opt'+sel+'" data-i="'+i+'" onclick="pickOpt('+i+')">'+
+        '<span class="quiz-opt-radio"></span>'+
+        '<span class="quiz-opt-text">'+o+'</span></button>';
+    }).join('')+
+  '</div>';
+
+  if(!oldQ){
+    qw.appendChild(newDiv);
+    gsap.from(newDiv,{y:20,opacity:0,duration:.35,ease:'power2.out'});
+  } else {
+    var dir=_qdir||'forward';
+    var xOut=dir==='forward'?-80:80;
+    gsap.to(oldQ,{x:xOut,opacity:0,duration:.25,ease:'power2.in',onComplete:function(){
+      qw.removeChild(oldQ);
+      qw.appendChild(newDiv);
+      gsap.fromTo(newDiv,{x:-xOut,opacity:0},{x:0,opacity:1,duration:.3,ease:'power2.out'});
+    }});
+  }
+  _qdir='forward';
+}
+
+var _qdir='forward';
+
+function pickOpt(i){
+  answers[curQ]=i;
+  document.querySelectorAll('.quiz-opt').forEach(function(b,j){
+    b.classList.toggle('selected',j===i);
+  });
+  var btn=document.getElementById('q-next');
+  btn.classList.add('vis');
+  gsap.fromTo(btn,{scale:.95},{scale:1,duration:.3,ease:'back.out(2)'});
+}
+
+window.pickOpt=pickOpt;
+
+function nextQ(){
+  if(answers[curQ]<0)return;
+  if(curQ<4){_qdir='forward';curQ++;renderQ();}
+  else{showResult();}
+}
+window.nextQ=nextQ;
+
+function prevQ(){
+  if(curQ===0)return;
+  _qdir='back';curQ--;renderQ();
+}
+window.prevQ=prevQ;
+
+/* Show result */
+function showResult(){
+  var ph=calcPhase(answers);
+  var R=RESULTS[ph];
+
+  /* Build phases row */
+  var phasesEl=document.getElementById('r-phases');
+  phasesEl.innerHTML=PHASES.map(function(p,i){
+    var cls='rphase'+(i===ph?' current':'');
+    return '<div class="'+cls+'" data-i="'+i+'">'+
+      '<span class="rphase-num">'+p.num+'</span>'+
+      '<div class="rphase-bubble">'+p.num+'</div>'+
+      '<span class="rphase-name">'+p.name+'</span>'+
+    '</div>';
+  }).join('');
+
+  document.getElementById('r-sub').textContent=R.sub;
+  document.getElementById('r-headline').textContent=R.headline;
+  document.getElementById('r-body').textContent=R.body;
+
+  switchState('s2','s3','forward');
+
+  /* Animate phases in */
+  setTimeout(function(){
+    var pEls=phasesEl.querySelectorAll('.rphase');
+    gsap.from(pEls,{y:30,opacity:0,stagger:.07,duration:.5,ease:'power3.out'});
+    /* Burst on current */
+    var curEl=phasesEl.querySelector('.rphase.current');
+    if(curEl){
+      gsap.fromTo(curEl,{scale:.7,opacity:0},{scale:1,opacity:1,duration:.6,ease:'back.out(2.5)',delay:.4});
+    }
+    gsap.from('#r-sub,#r-headline,#r-body',{y:20,opacity:0,stagger:.1,duration:.5,ease:'power2.out',delay:.6});
+  },400);
+}
+
+window.showDownload=function showDownload(){
+  switchState('s3','s4','forward');
+  setTimeout(function(){
+    gsap.from('.dl-check',{scale:0,rotation:-90,duration:.6,ease:'back.out(2)'});
+    gsap.from('.dl-title',{y:20,opacity:0,duration:.5,delay:.2,ease:'power2.out'});
+    gsap.from('.dl-sub',{y:16,opacity:0,duration:.45,delay:.35,ease:'power2.out'});
+    gsap.from('.dl-btn',{y:20,opacity:0,duration:.45,delay:.5,ease:'power2.out'});
+    gsap.from('.dl-micro',{opacity:0,duration:.4,delay:.7});
+    /* Pulse on download button */
+    setTimeout(function(){
+      gsap.fromTo('.dl-btn',{boxShadow:'0 0 0 0 rgba(229,255,0,.6)'},{boxShadow:'0 0 0 14px rgba(229,255,0,0)',duration:.8,ease:'power2.out'});
+    },900);
+  },400);
+};
+
+})();
+</script>
+</body>
+</html>
